@@ -1,0 +1,132 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="list-item">
+  <template>
+    <style>
+      :host {
+        display: block;
+        background-color: #fff;
+        -webkit-border-radius: 2px;
+        max-width: 280px;
+        border-radius: 2px;
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+        margin: 7px;
+        padding: 20px 12px 20px 16px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Loading */
+      .skeleton-text-container {
+        cursor: default;
+        font-size: 13px;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-bottom: 4px;
+      }
+      .skeleton-text {
+        color: rgba(0,0,0,.72);
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        height: 12px;
+        margin: 2px 0;
+      }
+      .skeleton-text.small {
+        width: -webkit-calc(100% - 60px);
+        width: calc(100% - 60px);
+      }
+      .animate {
+        -webkit-animation: gradient-slide 2.2s ease infinite;
+        animation: gradient-slide 2.2s ease infinite;
+        background: 0 0/300% 300% linear-gradient(-61deg,#eeeeee 40%,#f5f5f5 50%,#eeeeee 60%);
+      }
+      @keyframes gradient-slide{
+        0% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      a{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .headline{
+        font-size: 18px;
+        color: var(--text-color, #212121);
+        margin-bottom: 8px;
+      }
+      :host(:hover) .headline{
+        color: var(--accent-color, #7CB342);
+      }
+      .text{
+        color: var(--secondary-text-color, #737373);
+        font-size: 13px;
+      }
+
+      /* Helper */
+      [hidden]{
+        display: none !important;
+      }
+    </style>
+
+    <!-- Loading Content -->
+    <div hidden$="[[!loading]]">
+      <div class="skeleton-text-container">
+        <div class="animate skeleton-text small"></div>
+      </div>
+      <div class="skeleton-text">
+        <div class="animate skeleton-text"></div>
+      </div>
+    </div>
+
+    <!-- Item Content -->
+    <div hidden$="[[loading]]">
+      <div hidden$="[[!headline]]" class="headline">[[headline]]</div>
+      <div hidden$="[[!text]]" class="text">[[text]]</div>
+      <slot></slot>
+      
+      <a tabindex="-1" draggable="false" href="[[href]]" hidden$="[[!href]]"></a>
+    </div>
+  </template>
+  <script>
+    /**
+     * `list-item`
+     * ES6 Polymer 2 list item with a skeleton loader
+     *
+     * @customElement
+     * @polymer
+     */
+    class ListItem extends Polymer.Element {
+      static get is() { return 'list-item'; }
+      static get properties() {
+        return {
+          // Optional header text
+          headline: {
+            type: String
+          },
+          // Optional body text
+          text: {
+            type: String
+          },
+          // Optional href
+          href: {
+            type: String
+          },
+          // When loading is true, a skeleton loader is shown
+          loading: {
+            type: Boolean,
+            value: false
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ListItem.is, ListItem);
+  </script>
+</dom-module>
