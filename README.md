@@ -17,8 +17,8 @@ ES6 Polymer 2 list item with a skeleton loader
 ```html
 <list-item
   headline="<list-item>"
-  text="ES6 Polymer 2 list item with a skeleton loader"
-  href="https://ryanburns.io"></list-item>
+  text="ES6 Polymer 2 list item with a skeleton loader">
+</list-item>
 
 <list-item loading>
   Slotted Content also works...
