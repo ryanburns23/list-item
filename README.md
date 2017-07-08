@@ -2,6 +2,8 @@
 
 ES6 Polymer 2 list item with a skeleton loader
 
+- See the API docs for styling
+
 ## Usage
 <!--
 ```

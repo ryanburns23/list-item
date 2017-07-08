@@ -1,5 +1,26 @@
 <link rel="import" href="../polymer/polymer-element.html">
 
+<!--
+`list-item`
+
+ES6 Polymer 2 list item with a skeleton loader
+
+### Styling
+`<list-item>` provides the following custom properties and mixins
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--text-color` | Headline text color | #212121
+`--paper-button` | Body text color | #737373
+`--loader-background` | Bg color of skeleton text | #eeeeee
+`--loader-color` | Bg color of moving loader | #f5f5f5
+
+@customElement
+@demo demo/index.html
+@polymer
+-->
+
 <dom-module id="list-item">
   <template>
     <style>
@@ -93,37 +114,19 @@
     </div>
   </template>
   <script>
-    /**
-     * `list-item`
-     * ES6 Polymer 2 list item with a skeleton loader
-     *
-     * ### Styling
-
-      `<list-item>` provides the following custom properties and mixins
-      for styling:
-
-      Custom property | Description | Default
-      ----------------|-------------|----------
-      `--text-color` | Headline text color | #212121
-      `--paper-button` | Body text color | #737373
-      `--loader-background` | Bg color of skeleton text | #eeeeee
-      `--loader-color` | Bg color of moving loader | #f5f5f5
-
-     * @customElement
-     * @demo demo/index.html
-     * @polymer
-     */
     class ListItem extends Polymer.Element {
       static get is() { return 'list-item'; }
       static get properties() {
         return {
           // Optional header text
           headline: {
-            type: String
+            type: String,
+            value: ""
           },
           // Optional body text
           text: {
-            type: String
+            type: String,
+            value: ""
           },
           // Optional href
           href: {
