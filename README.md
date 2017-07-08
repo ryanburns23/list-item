@@ -20,7 +20,17 @@ ES6 Polymer 2 list item with a skeleton loader
   text="ES6 Polymer 2 list item with a skeleton loader">
 </list-item>
 
-<list-item loading>
+<style>
+  list-item.dark{
+    background: #303030;
+    --text-color: #ffffff;
+    --secondary-text-color: #bcbcbc;
+    --loader-background: #111;
+    --loader-color: #7CB342;
+  }
+</style>
+
+<list-item class="dark" loading>
   Slotted Content also works...
   Remove the loading attribute to reveal this text
 </list-item>

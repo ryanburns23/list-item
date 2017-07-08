@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>List Item Demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../list-item.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+
+      </style>
+    </custom-style>
+
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic List Item demo</h3>
+      <demo-snippet>
+        <template>
+          <list-item
+            headline="<list-item>"
+            text="ES6 Polymer 2 list item with a skeleton loader">
+          </list-item>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Loading State</h3>
+      <demo-snippet>
+        <template>
+          <list-item loading></list-item>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Slotted Content</h3>
+      <demo-snippet>
+        <template>
+          <list-item>
+            Slotted Content also works...
+          </list-item>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Themable</h3>
+      <demo-snippet>
+        <template>
+          <style>
+            list-item.dark{
+              background: #303030;
+              --text-color: #ffffff;
+              --secondary-text-color: #bcbcbc;
+              --loader-background: #111;
+              --loader-color: #7CB342;
+            }
+          </style>
+
+          <list-item class="dark" loading></list-item>
+
+          <list-item
+            class="dark"
+            headline="<list-item>"
+            text="ES6 Polymer 2 list item with a skeleton loader">
+          </list-item>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

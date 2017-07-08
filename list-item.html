@@ -7,12 +7,12 @@
         display: block;
         background-color: #fff;
         -webkit-border-radius: 2px;
-        max-width: 280px;
         border-radius: 2px;
         -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
         box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-        margin: 7px;
         padding: 20px 12px 20px 16px;
+        margin-bottom: 10px;
+        outline: none;
         overflow: hidden;
         position: relative;
       }
@@ -28,7 +28,6 @@
         padding-bottom: 4px;
       }
       .skeleton-text {
-        color: rgba(0,0,0,.72);
         -webkit-border-radius: 6px;
         border-radius: 6px;
         height: 12px;
@@ -41,7 +40,7 @@
       .animate {
         -webkit-animation: gradient-slide 2.2s ease infinite;
         animation: gradient-slide 2.2s ease infinite;
-        background: 0 0/300% 300% linear-gradient(-61deg,#eeeeee 40%,#f5f5f5 50%,#eeeeee 60%);
+        background: 0 0/300% 300% linear-gradient(-61deg, var(--loader-background, #eeeeee) 40%, var(--loader-color, #f5f5f5) 50%, var(--loader-background, #eeeeee) 60%);
       }
       @keyframes gradient-slide{
         0% { background-position: 100% 50%; }
@@ -55,7 +54,6 @@
         left: 0;
         right: 0;
       }
-
       .headline{
         font-size: 18px;
         color: var(--text-color, #212121);
@@ -80,7 +78,7 @@
       <div class="skeleton-text-container">
         <div class="animate skeleton-text small"></div>
       </div>
-      <div class="skeleton-text">
+      <div class="skeleton-text-container">
         <div class="animate skeleton-text"></div>
       </div>
     </div>
@@ -90,7 +88,7 @@
       <div hidden$="[[!headline]]" class="headline">[[headline]]</div>
       <div hidden$="[[!text]]" class="text">[[text]]</div>
       <slot></slot>
-      
+
       <a tabindex="-1" draggable="false" href="[[href]]" hidden$="[[!href]]"></a>
     </div>
   </template>
@@ -99,7 +97,20 @@
      * `list-item`
      * ES6 Polymer 2 list item with a skeleton loader
      *
+     * ### Styling
+
+      `<list-item>` provides the following custom properties and mixins
+      for styling:
+
+      Custom property | Description | Default
+      ----------------|-------------|----------
+      `--text-color` | Headline text color | #212121
+      `--paper-button` | Body text color | #737373
+      `--loader-background` | Bg color of skeleton text | #eeeeee
+      `--loader-color` | Bg color of moving loader | #f5f5f5
+
      * @customElement
+     * @demo demo/index.html
      * @polymer
      */
     class ListItem extends Polymer.Element {
