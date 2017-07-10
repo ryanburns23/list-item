@@ -29,6 +29,7 @@ ES6 Polymer 2 list item with a skeleton loader
     --secondary-text-color: #bcbcbc;
     --loader-background: #111;
     --loader-color: #7CB342;
+    color: var(--text-color);
   }
 </style>
 
